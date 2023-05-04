@@ -1,4 +1,4 @@
-package LinkedList;
+package Clase_alumno;
 // Import for JOptionPane
 import javax.swing.JOptionPane;
 

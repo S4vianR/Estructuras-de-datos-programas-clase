@@ -1,4 +1,4 @@
-package LinkedList;
+package Clase_alumno;
 public class Alumnos {
     private String nombre;
     private int matricula;
