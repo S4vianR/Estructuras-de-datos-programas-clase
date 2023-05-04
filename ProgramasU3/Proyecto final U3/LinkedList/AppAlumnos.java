@@ -1,3 +1,4 @@
+package LinkedList;
 // Import for JOptionPane
 import javax.swing.JOptionPane;
 
@@ -13,7 +14,7 @@ public class AppAlumnos {
         // Menu
         int opcion = 0;
         do {
-            String menu = "1. Agregar alumno a documento\n2. Mostrar alumnos\n3. Buscar alumno\n4. Salir";
+            String menu = "1. Agregar alumno\n2. Mostrar alumnos\n3. Buscar alumno\n4. Salir";
             opcion = Integer.parseInt(JOptionPane.showInputDialog(menu));
 
             switch (opcion) {
@@ -48,6 +49,7 @@ public class AppAlumnos {
                     break;
                 case 4:
                     // Exit
+                    JOptionPane.showMessageDialog(null, "Adios");
                     break;
                 default:
                     JOptionPane.showMessageDialog(null, "Opcion invalida");

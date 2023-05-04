@@ -1,3 +1,4 @@
+package LinkedList;
 public class Nodo {
     private Alumnos alumno;
     private Nodo siguiente;

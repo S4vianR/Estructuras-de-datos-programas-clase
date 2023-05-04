@@ -1,14 +1,4 @@
-/*
- * Diseñar clases para definir tipos adecuados para los siguientes contextos (ejemplos: clase
- * Alumno, Cuenta, por mencionar algunas), así como nodos y una clase para manejar diferentes
- * operaciones de la lista para los siguientes contextos:
- * 
- * Generar reportes en base a archivos para alumnos de una escuela. En la aplicación se
- * podrá seleccionar el archivo a utilizar. La lista deberá ser capaz de ordenar por número de
- * matrícula, además deberá mostrar los datos de los tres mejores promedios de los datos
- * registrados en cada archivo. Deberá proporcionarle al usuario la capacidad de buscar en
- * la lista ya sea por número de matrícula o por nombre del alumno.
- */
+package LinkedList;
 public class Alumnos {
     private String nombre;
     private int matricula;
