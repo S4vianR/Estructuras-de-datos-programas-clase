@@ -23,13 +23,14 @@ public class AppTienda {
 
         // Menu
         do {
-            String menu = "1. Registrar producto\n" +
+            String menu = "Menú\n" +
+                    "1. Registrar producto\n" +
                     "2. Mostrar lista de productos\n" +
                     "3. Comprar producto\n" +
                     "4. Surtir producto\n" +
                     "5. Salir\n" +
                     "Opción: ";
-            opcion = Integer.parseInt(JOptionPane.showInputDialog(null, menu, "Menú", JOptionPane.QUESTION_MESSAGE));
+            opcion = Integer.parseInt(JOptionPane.showInputDialog(menu));
             switch (opcion) {
                 case 1:
                     // Register product
