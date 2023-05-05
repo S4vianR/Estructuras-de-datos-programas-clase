@@ -1,25 +1,3 @@
-/*
- * Hacer un sistema para el manejo de inventarios de una tienda de abarrotes. Al
- * registrar
- * los datos se deberán ir insertado por orden de número de parte de los
- * productos sin
- * aceptar números duplicados. Además, deberán registrarse el precio unitario
- * del producto,
- * descripción y cantidad en inventario. El usuario podrá ver la lista de
- * productos en pantalla,
- * mostrando todos los datos de cada producto. Además, deberá tener una opción
- * para
- * manejar las compras de productos, para ello solicitar el número de parte y la
- * cantidad a
- * comprar. Deberá verificar que la cantidad a comprar no exceda la cantidad en
- * inventario.
- * En caso de que la compra sea exitosa actualizar la cantidad en inventario.
- * Además, agregar
- * la opción de actualizar la cantidad en inventario de los productos cuando se
- * surtan en
- * almacén cada uno de ellos.
- */
-
  package tienda;
 
  public class Tienda {
