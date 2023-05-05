@@ -28,7 +28,17 @@ public class AppAlumnos {
                     lista.add(nodo);
                     break;
                 case 2:
-                    // Show all students
+                    // Sort the list by enrollment number (matricula)
+                    for (int i = 0; i < lista.size(); i++) {
+                        for (int j = 0; j < lista.size() - 1; j++) {
+                            if (lista.get(j).getAlumno().getMatricula() > lista.get(j + 1).getAlumno().getMatricula()) {
+                                Nodo aux = lista.get(j);
+                                lista.set(j, lista.get(j + 1));
+                                lista.set(j + 1, aux);
+                            }
+                        }
+                    }
+                    // Show the list
                     String alumnos = "";
                     for (Nodo n : lista) {
                         alumnos += n.getAlumno().toString() + "\n\n";
