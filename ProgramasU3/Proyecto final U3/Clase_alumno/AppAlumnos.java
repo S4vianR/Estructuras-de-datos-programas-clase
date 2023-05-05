@@ -14,7 +14,7 @@ public class AppAlumnos {
         // Menu
         int opcion = 0;
         do {
-            String menu = "1. Agregar alumno\n2. Mostrar alumnos\n3. Buscar alumno\n4. Salir";
+            String menu = "1. Agregar alumno\n2. Mostrar alumnos\n3. Buscar alumno por nombre\n4. Buscar alumno por matricula\n5. Mostrar los alumnos con los mejores 3 promedios\n6. Salir";
             opcion = Integer.parseInt(JOptionPane.showInputDialog(menu));
 
             switch (opcion) {
@@ -36,18 +36,36 @@ public class AppAlumnos {
                     JOptionPane.showMessageDialog(null, alumnos);
                     break;
                 case 3:
-                    // Search for a student
-                    String busqueda = JOptionPane.showInputDialog("Nombre o matricula del alumno");
-                    String resultado = "";
+                    // Search a student by name
+                    String nombreBusqueda = JOptionPane.showInputDialog("Nombre del alumno");
+                    String alumnoBusqueda = "";
                     for (Nodo n : lista) {
-                        if (n.getAlumno().getNombre().equals(busqueda)
-                                || n.getAlumno().getMatricula() == Integer.parseInt(busqueda)) {
-                            resultado = n.getAlumno().toString();
+                        if (n.getAlumno().getNombre().equals(nombreBusqueda)) {
+                            alumnoBusqueda = n.getAlumno().toString();
                         }
                     }
-                    JOptionPane.showMessageDialog(null, resultado);
+                    JOptionPane.showMessageDialog(null, alumnoBusqueda);
                     break;
                 case 4:
+                    // Search a student by enrollment number (matricula)
+                    int matriculaBusqueda = Integer.parseInt(JOptionPane.showInputDialog("Matricula del alumno"));
+                    String alumnoBusquedaMatricula = "";
+                    for (Nodo n : lista) {
+                        if (n.getAlumno().getMatricula() == matriculaBusqueda) {
+                            alumnoBusquedaMatricula = n.getAlumno().toString();
+                        }
+                    }
+                    JOptionPane.showMessageDialog(null, alumnoBusquedaMatricula);
+                    break;
+                case 5:
+                    // Show the 3 students with the best averages
+                    String mejoresAlumnos = "";
+                    for (int i = 0; i < 3; i++) {
+                        mejoresAlumnos += lista.get(i).getAlumno().toString() + "\n\n";
+                    }
+                    JOptionPane.showMessageDialog(null, mejoresAlumnos);
+                    break;
+                case 6:
                     // Exit
                     JOptionPane.showMessageDialog(null, "Adios");
                     break;
