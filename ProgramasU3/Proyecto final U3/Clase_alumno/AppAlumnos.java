@@ -58,10 +58,44 @@ public class AppAlumnos {
                     JOptionPane.showMessageDialog(null, alumnoBusquedaMatricula);
                     break;
                 case 5:
-                    // Show the 3 students with the best averages
+                    /*
+                     * Mostrar los alumnos con los 3 mejores promedios de la lista sin importar cuando alumnos haya,
+                     * verificar con todos los promedios de la lista y mostrar los 3 mejores,
+                     * y mostrar los 3 mejores promedios con sus datos en orden descendente.
+                     */
                     String mejoresAlumnos = "";
-                    for (int i = 0; i < 3; i++) {
-                        mejoresAlumnos += lista.get(i).getAlumno().toString() + "\n\n";
+                    float promedioMayor = 0;
+                    float promedioMayor2 = 0;
+                    float promedioMayor3 = 0;
+                    for (Nodo n : lista) {
+                        if (n.getAlumno().getPromedio() > promedioMayor) {
+                            promedioMayor = n.getAlumno().getPromedio();
+                        }
+                    }
+                    for (Nodo n : lista) {
+                        if (n.getAlumno().getPromedio() > promedioMayor2 && n.getAlumno().getPromedio() < promedioMayor) {
+                            promedioMayor2 = n.getAlumno().getPromedio();
+                        }
+                    }
+                    for (Nodo n : lista) {
+                        if (n.getAlumno().getPromedio() > promedioMayor3 && n.getAlumno().getPromedio() < promedioMayor2) {
+                            promedioMayor3 = n.getAlumno().getPromedio();
+                        }
+                    }
+                    for (Nodo n : lista) {
+                        if (n.getAlumno().getPromedio() == promedioMayor) {
+                            mejoresAlumnos += n.getAlumno().toString() + "\n\n";
+                        }
+                    }
+                    for (Nodo n : lista) {
+                        if (n.getAlumno().getPromedio() == promedioMayor2) {
+                            mejoresAlumnos += n.getAlumno().toString() + "\n\n";
+                        }
+                    }
+                    for (Nodo n : lista) {
+                        if (n.getAlumno().getPromedio() == promedioMayor3) {
+                            mejoresAlumnos += n.getAlumno().toString() + "\n\n";
+                        }
                     }
                     JOptionPane.showMessageDialog(null, mejoresAlumnos);
                     break;
@@ -73,6 +107,6 @@ public class AppAlumnos {
                     JOptionPane.showMessageDialog(null, "Opcion invalida");
                     break;
             }
-        } while (opcion != 4);
+        } while (opcion != 6);
     }
 }
