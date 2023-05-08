@@ -183,10 +183,10 @@ public class ArbolBinario {
             imprime(r.getHijoIzquierdo(), nivel + 1, arbolString);
         }
     }
-    
+
     public void imprime() {
         StringBuilder arbolString = new StringBuilder();
         imprime(this.raiz, 1, arbolString);
         JOptionPane.showMessageDialog(null, arbolString.toString(), "Árbol Binario", JOptionPane.INFORMATION_MESSAGE);
-    }    
+    }
 }

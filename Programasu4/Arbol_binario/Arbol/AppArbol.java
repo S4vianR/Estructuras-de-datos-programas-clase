@@ -18,7 +18,7 @@ public class AppArbol {
                         "Arbol Binario", JOptionPane.QUESTION_MESSAGE));
                 switch (opcion) {
                     case 1:
-                    
+
                         elemento = JOptionPane.showInputDialog(null, "Ingresa el dato del nodo",
                                 "Agregando Nodo", JOptionPane.QUESTION_MESSAGE);
                         arbol.agregarNodo(elemento);
