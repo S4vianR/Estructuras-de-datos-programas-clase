@@ -1,6 +1,6 @@
 package arbolbinario;
 
-public class Alumno {
+public class Alumno implements Comparable{
     // Atributos
     private String noControl;
     private String nombre;
@@ -85,5 +85,39 @@ public class Alumno {
         return "Numero de control: " + noControl + "\nNombre: " + nombre + "\nApellido paterno: " + apellidoPaterno
                 + "\nApellido materno: " + apellidoMaterno + "\nCarrera: " + carrera + "\nSemestre: " + semestre
                 + "\nPromedio: " + promedio;
+    }
+
+    // Metodo compareTo
+    @Override
+    public int compareTo(Object objeto) {
+        if (objeto == null) {
+            return -1;
+        }
+
+        if (getClass() != objeto.getClass()) {
+            throw new UnsupportedOperationException("Los objetos no son de la misma clase");
+        }
+
+        final Alumno other = (Alumno) objeto;
+        return this.noControl.compareTo(other.noControl);
+    }
+
+    // Metodo equals
+    @Override
+    public boolean equals(Object objeto) {
+        if (this == objeto) {
+            return true;
+        }
+
+        if (objeto == null) {
+            return false;
+        }
+
+        if (getClass() != objeto.getClass()) {
+            return false;
+        }
+
+        final Alumno other = (Alumno) objeto;
+        return this.noControl.equals(other.noControl);
     }
 }
