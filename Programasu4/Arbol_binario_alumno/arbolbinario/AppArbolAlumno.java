@@ -84,8 +84,8 @@ public class AppArbolAlumno {
                     // 5: buscarNodo
                     // Pedir el numero de control
                     noControl = JOptionPane.showInputDialog(null, "Ingresa el numero de control:");
-                    // Buscar el nodo
-                    arbol.buscarNodo(noControl);
+                    // Buscar el nodo y mostrarlo
+                    NodoArbol nodo = arbol.buscarNodo(noControl);
                     break;
                 }
                 case 6:

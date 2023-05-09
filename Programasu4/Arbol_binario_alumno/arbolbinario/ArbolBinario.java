@@ -30,85 +30,27 @@ public class ArbolBinario {
 
     // Metodos
     // 1: Metodo para agregar un nodo al arbol usando Comparable
-    public Object agregarNodo(Object dato) {
-        /*
-         * // Crear un nuevo nodo
-         * NodoArbol nuevo = new NodoArbol(dato);
-         * // Si el arbol esta vacio
-         * if (raiz == null) {
-         * // El nuevo nodo sera la raiz
-         * raiz = nuevo;
-         * } else {
-         * // Si el arbol no esta vacio
-         * // Crear un nodo auxiliar
-         * NodoArbol aux = raiz;
-         * // Crear un nodo padre
-         * NodoArbol padre;
-         * // Mientras el nodo auxiliar no sea nulo
-         * while (aux != null) {
-         * // El padre sera el nodo auxiliar
-         * padre = aux;
-         * // Si el dato del nuevo nodo es menor al dato del nodo auxiliar
-         * if (nuevo.getDato().toString().compareTo(aux.getDato().toString()) < 0) {
-         * // El nodo auxiliar sera el nodo izquierdo
-         * aux = aux.getIzquierdo();
-         * // Si el nodo auxiliar es nulo
-         * if (aux == null) {
-         * // El nodo izquierdo del padre sera el nuevo nodo
-         * padre.setIzquierdo(nuevo);
-         * }
-         * } else {
-         * // Si el dato del nuevo nodo es mayor al dato del nodo auxiliar
-         * // El nodo auxiliar sera el nodo derecho
-         * aux = aux.getDerecho();
-         * // Si el nodo auxiliar es nulo
-         * if (aux == null) {
-         * // El nodo derecho del padre sera el nuevo nodo
-         * padre.setDerecho(nuevo);
-         * }
-         * }
-         * }
-         */
+    // Metodo recursivo
+    public void agregarNodo(Object dato) {
+        raiz = agregarNodo(dato, raiz);
+    }
 
-        // Crear un nuevo nodo
-        NodoArbol nuevo = new NodoArbol(dato);
+    public NodoArbol agregarNodo(Object dato, NodoArbol raiz) {
         // Si el arbol esta vacio
         if (raiz == null) {
-            // El nuevo nodo sera la raiz
-            raiz = nuevo;
+            // Crear un nuevo nodo
+            raiz = new NodoArbol(dato);
         } else {
-            // Si el arbol no esta vacio
-            // Crear un nodo auxiliar
-            NodoArbol aux = raiz;
-            // Crear un nodo padre
-            NodoArbol padre;
-            // Mientras el nodo auxiliar no sea nulo
-            while (aux != null) {
-                // El padre sera el nodo auxiliar
-                padre = aux;
-                // Si el dato del nuevo nodo es menor al dato del nodo auxiliar
-                if (((Comparable) nuevo.getDato()).compareTo(aux.getDato()) < 0) {
-                    // El nodo auxiliar sera el nodo izquierdo
-                    aux = aux.getIzquierdo();
-                    // Si el nodo auxiliar es nulo
-                    if (aux == null) {
-                        // El nodo izquierdo del padre sera el nuevo nodo
-                        padre.setIzquierdo(nuevo);
-                    }
-                } else {
-                    // Si el dato del nuevo nodo es mayor al dato del nodo auxiliar
-                    // El nodo auxiliar sera el nodo derecho
-                    aux = aux.getDerecho();
-                    // Si el nodo auxiliar es nulo
-                    if (aux == null) {
-                        // El nodo derecho del padre sera el nuevo nodo
-                        padre.setDerecho(nuevo);
-                    }
-                }
+            // Si el dato es menor que la raiz
+            if (((Comparable) dato).compareTo(raiz.getDato()) < 0) {
+                // Agregar el dato al subarbol izquierdo
+                raiz.setIzquierdo(agregarNodo(dato, raiz.getIzquierdo()));
+            } else {
+                // Agregar el dato al subarbol derecho
+                raiz.setDerecho(agregarNodo(dato, raiz.getDerecho()));
             }
         }
-        // Retornar el nuevo nodo
-        return nuevo;
+        return raiz;
     }
 
     // 2: Metodo para recorrer el arbol en orden (izquierda, raiz, derecha) con
@@ -154,7 +96,13 @@ public class ArbolBinario {
     }
 
     // 5: Metodo para buscar un nodo en el arbol binario (metodo recursivo)
-    public Object buscarNodo(NodoArbol raiz, Object dato) {
+    // Metodo recursivo de buscar nodo
+    public NodoArbol buscarNodo(Object dato) {
+        NodoArbol aux = buscarNodo(raiz, dato);
+        return aux;
+    }
+
+    public NodoArbol buscarNodo(NodoArbol raiz, Object dato) {
         // Si el arbol esta vacio
         if (raiz == null) {
             // Retornar nulo
@@ -179,38 +127,8 @@ public class ArbolBinario {
         }
     }
 
-    // 6: Metodo para eliminar un nodo del arbol
-    public void eliminarNodo(Object dato) {
-        // Crear un nodo auxiliar
-        NodoArbol aux = raiz;
-        // Crear un nodo padre
-        NodoArbol padre = raiz;
-        // Crear un booleano para saber si el nodo es izquierdo o derecho
-        boolean esIzquierdo = true;
-        // Mientras el dato del nodo auxiliar no sea igual al dato buscado
-        while (aux.getDato().toString().compareTo(dato.toString()) != 0) {
-            // El padre sera el nodo auxiliar
-            padre = aux;
-            // Si el dato del nodo auxiliar es menor al dato buscado
-            if (aux.getDato().toString().compareTo(dato.toString()) < 0) {
-                // El nodo auxiliar sera el nodo derecho
-                esIzquierdo = false;
-                aux = aux.getDerecho();
-            } else {
-                // Si el dato del nodo auxiliar es mayor al dato buscado
-                // El nodo auxiliar sera el nodo izquierdo
-                esIzquierdo = true;
-                aux = aux.getIzquierdo();
-            }
-            // Si el nodo auxiliar es nulo
-            if (aux == null) {
-                // Mostrar mensaje
-                JOptionPane.showMessageDialog(null, "Nodo no encontrado");
-                // Salir del metodo
-                return;
-            }
-        }
-    }
+    // 6: Metodo para eliminar un nodo del arbol binario (metodo no recursivo)
+    
 
     // Getters y Setters
     public NodoArbol getRaiz() {
