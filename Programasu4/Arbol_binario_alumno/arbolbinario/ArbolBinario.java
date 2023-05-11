@@ -1,134 +1,126 @@
-/*
- * Metodos a implementar:
- * 1. Agregar un nodo
- * 2. Recorrer el arbol en order
- * 3. Recorrer el arbol en preorden
- * 4. Recorrer el arbol en postorden
- * 5. Buscar un nodo en el arbol
- * 6. Eliminar un nodo del arbol
- * 7. Salir
- */
-
-// Package
 package arbolbinario;
 
-// Import
-import arbolbinario.*;
-
-// Import JOptionPane
+// Import for JavaOptionPane
 import javax.swing.JOptionPane;
 
-// Clase ArbolBinario
 public class ArbolBinario {
     // Atributos
-    private NodoArbol raiz;
+    NodoArbol raiz;
 
     // Constructor
     public ArbolBinario() {
         raiz = null;
     }
 
-    // Metodos
-    // 1: Metodo para agregar un nodo al arbol usando Comparable
-    // Metodo recursivo
-    public void agregarNodo(Object dato) {
-        raiz = agregarNodo(dato, raiz);
+    // Métodos
+
+    // isEmpty
+    public boolean isEmpty() {
+        return raiz == null;
     }
 
-    public NodoArbol agregarNodo(Object dato, NodoArbol raiz) {
-        // Si el arbol esta vacio
-        if (raiz == null) {
-            // Crear un nuevo nodo
-            raiz = new NodoArbol(dato);
-        } else {
-            // Si el dato es menor que la raiz
-            if (((Comparable) dato).compareTo(raiz.getDato()) < 0) {
-                // Agregar el dato al subarbol izquierdo
-                raiz.setIzquierdo(agregarNodo(dato, raiz.getIzquierdo()));
-            } else {
-                // Agregar el dato al subarbol derecho
-                raiz.setDerecho(agregarNodo(dato, raiz.getDerecho()));
-            }
+    // Insertar
+    public void insertar(Object dato) {
+        raiz = insertar(raiz, dato);
+    }
+
+    public NodoArbol insertar(NodoArbol r, Object obj) {
+        if (r == null)
+            r = new NodoArbol(obj);
+        else {
+            if (((Comparable) r.dato).compareTo((Comparable) obj) < 0)
+                r.hijoIzquierdo = insertar(r.hijoIzquierdo, obj);
+            else
+                r.hijoDerecho = insertar(r.hijoDerecho, obj);
         }
-        return raiz;
+        return r;
     }
 
-    // 2: Metodo para recorrer el arbol en orden (izquierda, raiz, derecha) con
-    // JOptionPane
-    public void recorrerEnOrden(NodoArbol raiz) {
-        // Si el arbol no esta vacio
-        if (raiz != null) {
-            // Recorrer el subarbol izquierdo
-            recorrerEnOrden(raiz.getIzquierdo());
-            // Visitar la raiz
-            JOptionPane.showMessageDialog(null, raiz.getDato());
-            // Recorrer el subarbol derecho
-            recorrerEnOrden(raiz.getDerecho());
-        }
-    }
-
-    // 3: Metodo para recorrer el arbol en preorden (raiz, izquierda, derecha) con
-    // JOptionPane
-    public void recorrerEnPreorden(NodoArbol raiz) {
-        // Si el arbol no esta vacio
-        if (raiz != null) {
-            // Visitar la raiz
-            JOptionPane.showMessageDialog(null, raiz.getDato());
-            // Recorrer el subarbol izquierdo
-            recorrerEnPreorden(raiz.getIzquierdo());
-            // Recorrer el subarbol derecho
-            recorrerEnPreorden(raiz.getDerecho());
-        }
-    }
-
-    // 4: Metodo para recorrer el arbol en postorden (izquierda, derecha, raiz) con
-    // JOptionPane
-    public void recorrerEnPostorden(NodoArbol raiz) {
-        // Si el arbol no esta vacio
-        if (raiz != null) {
-            // Recorrer el subarbol izquierdo
-            recorrerEnPostorden(raiz.getIzquierdo());
-            // Recorrer el subarbol derecho
-            recorrerEnPostorden(raiz.getDerecho());
-            // Visitar la raiz
-            JOptionPane.showMessageDialog(null, raiz.getDato());
-        }
-    }
-
-    // 5: Metodo para buscar un nodo en el arbol binario (metodo recursivo)
-    // Metodo recursivo de buscar nodo
-    public NodoArbol buscarNodo(Object dato) {
-        NodoArbol aux = buscarNodo(raiz, dato);
+    // Buscar
+    public NodoArbol buscar(Object dato) {
+        NodoArbol aux = buscar(raiz, dato);
         return aux;
     }
 
-    public NodoArbol buscarNodo(NodoArbol raiz, Object dato) {
-        // Si el arbol esta vacio
-        if (raiz == null) {
-            // Retornar nulo
+    public NodoArbol buscar(NodoArbol aux, Object obj) {
+        if (aux != null) {
+            if (((Comparable) obj).compareTo(aux.dato) < 0)
+                return buscar(aux.hijoIzquierdo, obj);
+            else if (((Comparable) obj).compareTo(aux.dato) > 0)
+                return buscar(aux.hijoDerecho, obj);
+            else
+                return aux;
+        } else
             return null;
-        } else {
-            // Si el arbol no esta vacio
-            // Si el dato del nodo raiz es igual al dato buscado
-            if (raiz.getDato().toString().compareTo(dato.toString()) == 0) {
-                // Retornar el nodo raiz
-                return raiz;
-            } else {
-                // Si el dato del nodo raiz es menor al dato buscado
-                if (raiz.getDato().toString().compareTo(dato.toString()) < 0) {
-                    // Retornar el metodo buscarNodo con el nodo derecho y el dato buscado
-                    return buscarNodo(raiz.getDerecho(), dato);
-                } else {
-                    // Si el dato del nodo raiz es mayor al dato buscado
-                    // Retornar el metodo buscarNodo con el nodo izquierdo y el dato buscado
-                    return buscarNodo(raiz.getIzquierdo(), dato);
-                }
-            }
+    }
+
+    // Eliminar
+    public void eliminar(Object dato) {
+        raiz = eliminar(raiz, dato);
+    }
+
+    public NodoArbol eliminar(NodoArbol r, Object obj) {
+        if (r == null)
+            return null;
+        // Si el dato a eliminar es menor al dato del nodo actual, se procede a buscar
+        if (((Comparable) obj).compareTo(r.dato) < 0)
+            r.hijoIzquierdo = eliminar(r.hijoIzquierdo, obj);
+        // Si el dato a eliminar es mayor al dato del nodo actual, se procede a buscar
+        else if (((Comparable) obj).compareTo(r.dato) > 0)
+            r.hijoDerecho = eliminar(r.hijoDerecho, obj);
+        // Si el dato a eliminar es igual al dato del nodo actual, se procede a eliminar
+        else {
+            // Si el nodo actual no tiene hijos, se elimina
+            if (r.hijoDerecho == null)
+                r = r.hijoIzquierdo;
+            else if (r.hijoIzquierdo == null)
+                r = r.hijoDerecho;
+            // Si el nodo actual tiene dos hijos, se busca el menor de los mayores
+            else
+                r.hijoIzquierdo = eliminar(r, r.hijoIzquierdo);
+        }
+        return r;
+    }
+
+    // Recorridos
+    // Preorden
+    public void preorden() {
+        preorden(raiz);
+    }
+
+    public void preorden(NodoArbol r) {
+        if (r != null) {
+            JOptionPane.showMessageDialog(null, r.dato, "Preorden", JOptionPane.INFORMATION_MESSAGE);
+            preorden(r.hijoIzquierdo);
+            preorden(r.hijoDerecho);
         }
     }
 
-    // 6: Metodo para eliminar un nodo del arbol binario (metodo no recursivo)
-    
+    // Inorden
+    public void inorden() {
+        inorden(raiz);
+    }
+
+    public void inorden(NodoArbol r) {
+        if (r != null) {
+            inorden(r.hijoIzquierdo);
+            JOptionPane.showMessageDialog(null, r.dato, "Inorden", JOptionPane.INFORMATION_MESSAGE);
+            inorden(r.hijoDerecho);
+        }
+    }
+
+    // Postorden
+    public void postorden() {
+        postorden(raiz);
+    }
+
+    public void postorden(NodoArbol r) {
+        if (r != null) {
+            postorden(r.hijoIzquierdo);
+            postorden(r.hijoDerecho);
+            JOptionPane.showMessageDialog(null, r.dato, "Postorden", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
 
     // Getters y Setters
     public NodoArbol getRaiz() {
@@ -138,4 +130,20 @@ public class ArbolBinario {
     public void setRaiz(NodoArbol raiz) {
         this.raiz = raiz;
     }
+
+    // toString
+    public String toString() {
+        return toString(raiz);
+    }
+
+    public String toString(NodoArbol r) {
+        String s = "";
+        if (r != null) {
+            s += r.dato + " ";
+            s += toString(r.hijoIzquierdo);
+            s += toString(r.hijoDerecho);
+        }
+        return s;
+    }
+
 }

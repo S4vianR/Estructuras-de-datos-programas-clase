@@ -5,26 +5,69 @@ import javax.swing.JOptionPane;
 
 public class AppEmpleado {
     public static void main(String[] args) {
-        Empleado e1 = new Empleado("123456789", "Juan", 1);
-        Empleado e2 = new Empleado("987654321", "Pedro", 2);
-        Empleado e3 = new Empleado("456789123", "María", 3);
-        Empleado e4 = new Empleado("321654987", "Ana", 4);
-        Empleado e5 = new Empleado("789123456", "Luis", 5);
-        Empleado e6 = new Empleado("654987321", "José", 6);
-
+        // Variables
         ArbolBinario arbol = new ArbolBinario();
-        arbol.insertar(e1);
-        arbol.insertar(e2);
-        arbol.insertar(e3);
-        arbol.insertar(e6);
-        arbol.insertar(e4);
-        arbol.insertar(e5);
+        int opcion = 0, numEmpleado;
+        String rfc, nombre;
+        Empleado empleado;
 
-        arbol.toString();
-
-        arbol.preorden();
-        arbol.inorden();
-        arbol.postorden();
-
+        // Do-While
+        do {
+            String menu = "1. Agregar nodo\n" +
+                            "2. Recorrer el arbol en preOrden\n" +
+                            "3. Recorrer el arbol inOrden\n" +
+                            "4. Recorrer el arbol en postOrden\n" +
+                            "5. Buscar un nodo\n" +
+                            "6. Eliminar un nodo\n" +
+                            "7. Salir\n" +
+                            "Opción: ";
+            opcion = Integer.parseInt(JOptionPane.showInputDialog(null, menu, "Arboles binarios", JOptionPane.QUESTION_MESSAGE));
+            switch (opcion){
+                case 1:
+                    rfc = JOptionPane.showInputDialog(null, "RFC: ", "Captura RFC", JOptionPane.QUESTION_MESSAGE);
+                    nombre = JOptionPane.showInputDialog(null, "Nombre: ", "Captura nombre", JOptionPane.QUESTION_MESSAGE);
+                    numEmpleado = Integer.parseInt(JOptionPane.showInputDialog(null, "Número de empleado: ", "Captura número de empleado", JOptionPane.QUESTION_MESSAGE));
+                    empleado = new Empleado(rfc, nombre, numEmpleado);
+                    arbol.insertar(empleado);
+                    break;
+                case 2:
+                    if (!arbol.isEmpty())
+                        arbol.preorden();
+                    else
+                        JOptionPane.showMessageDialog(null, "El árbol está vacío", "Árbol vacío", JOptionPane.ERROR_MESSAGE);
+                    break;
+                case 3:
+                    if (!arbol.isEmpty())
+                        arbol.inorden();
+                    else
+                        JOptionPane.showMessageDialog(null, "El árbol está vacío", "Árbol vacío", JOptionPane.ERROR_MESSAGE);
+                    break;
+                case 4:
+                    if (!arbol.isEmpty())
+                        arbol.postorden();
+                    else
+                        JOptionPane.showMessageDialog(null, "El árbol está vacío", "Árbol vacío", JOptionPane.ERROR_MESSAGE);
+                    break;
+                case 5:
+                    rfc = JOptionPane.showInputDialog(null, "RFC: ", "Buscar un nodo por RFC", JOptionPane.QUESTION_MESSAGE);
+                    empleado = new Empleado(rfc, "", 0);
+                    if (arbol.buscar(empleado) != null)
+                        JOptionPane.showMessageDialog(null, "El empleado con RFC: " + rfc + " sí existe");
+                    else
+                        JOptionPane.showMessageDialog(null, "El empleado con RFC: " + rfc + " no existe");
+                    break;
+                case 6:
+                    rfc = JOptionPane.showInputDialog(null, "RFC: ", "Eliminar un nodo por RFC", JOptionPane.QUESTION_MESSAGE);
+                    empleado = new Empleado(rfc, "", 0);
+                    arbol.eliminar(empleado);
+                    break;
+                case 7:
+                    JOptionPane.showMessageDialog(null, "Fin del programa");
+                    break;
+                default:
+                    JOptionPane.showMessageDialog(null, "Opción no válida");
+                    break;
+            }
+        } while (opcion != 7);
     }
 }

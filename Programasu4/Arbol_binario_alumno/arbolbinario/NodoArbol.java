@@ -1,18 +1,16 @@
 package arbolbinario;
 
-// Clase que representa un nodo de un arbol binario
-// Contiene un dato, un nodo izquierdo y un nodo derecho
 public class NodoArbol {
     // Atributos
-    private Object dato;
-    private NodoArbol izquierdo;
-    private NodoArbol derecho;
+    Object dato;
+    NodoArbol hijoIzquierdo;
+    NodoArbol hijoDerecho;
 
     // Constructor
     public NodoArbol(Object dato) {
         this.dato = dato;
-        izquierdo = null;
-        derecho = null;
+        this.hijoIzquierdo = null;
+        this.hijoDerecho = null;
     }
 
     // Getters y Setters
@@ -20,30 +18,20 @@ public class NodoArbol {
         return dato;
     }
 
+    public NodoArbol getHijoIzquierdo() {
+        return hijoIzquierdo;
+    }
+
+    public NodoArbol getHijoDerecho() {
+        return hijoDerecho;
+    }
+
     public void setDato(Object dato) {
         this.dato = dato;
     }
 
-    public NodoArbol getIzquierdo() {
-        return izquierdo;
-    }
-
-    public void setIzquierdo(NodoArbol izquierdo) {
-        this.izquierdo = izquierdo;
-    }
-
-    public NodoArbol getDerecho() {
-        return derecho;
-    }
-
-    public void setDerecho(NodoArbol derecho) {
-        this.derecho = derecho;
-    }
-
     // toString
-    @Override
     public String toString() {
-        return dato.toString();
+        return dato + " ";
     }
-
 }
