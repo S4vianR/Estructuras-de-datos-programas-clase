@@ -122,6 +122,15 @@ public class ArbolBinario {
         }
     }
 
+    // Getters y Setters
+    public NodoArbol getRaiz() {
+        return raiz;
+    }
+
+    public void setRaiz(NodoArbol raiz) {
+        this.raiz = raiz;
+    }
+
     // toString
     public String toString() {
         return toString(raiz);

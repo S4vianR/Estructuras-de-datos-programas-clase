@@ -48,4 +48,35 @@ public class Empleado implements Comparable<Empleado> {
 
         return true;
     }
+
+    // Getters y Setters
+    public String getRfc() {
+        return rfc;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public int getNumEmpleado() {
+        return numEmpleado;
+    }
+
+    public void setRfc(String rfc) {
+        this.rfc = rfc;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setNumEmpleado(int numEmpleado) {
+        this.numEmpleado = numEmpleado;
+    }
+
+    // toString
+    @Override
+    public String toString() {
+        return "RFC: " + rfc + "\nNombre: " + nombre + "\nNúmero de empleado: " + numEmpleado + "\n";
+    }
 }
