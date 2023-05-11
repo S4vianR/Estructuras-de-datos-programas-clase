@@ -83,7 +83,7 @@ public class ArbolBinario {
     }
 
     // Recorridos
-    // Preorden
+    // Preorden ordenado por el valor de los datos (ascendente)
     public void preorden() {
         preorden(raiz);
     }
@@ -96,7 +96,7 @@ public class ArbolBinario {
         }
     }
 
-    // Inorden
+    // Inorden ordenado ascendentemente por el valor de los datos
     public void inorden() {
         inorden(raiz);
     }
@@ -109,7 +109,7 @@ public class ArbolBinario {
         }
     }
 
-    // Postorden
+    // Postorden ordenado alfabéticamente
     public void postorden() {
         postorden(raiz);
     }

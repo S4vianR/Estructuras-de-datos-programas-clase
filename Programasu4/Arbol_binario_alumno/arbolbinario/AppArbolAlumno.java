@@ -28,7 +28,8 @@ public class AppArbolAlumno {
                 case 1:
                     // Pedir datos
                     // Nombre completo
-                    nombre = JOptionPane.showInputDialog(null, "Nombre (si tiene dos o mas, agregarlos): ", "Agregar un nodo",
+                    nombre = JOptionPane.showInputDialog(null, "Nombre (si tiene dos o mas, agregarlos): ",
+                            "Agregar un nodo",
                             JOptionPane.QUESTION_MESSAGE);
                     apellidoPaterno = JOptionPane.showInputDialog(null, "Apellido paterno: ", "Agregar un nodo",
                             JOptionPane.QUESTION_MESSAGE);
@@ -82,17 +83,15 @@ public class AppArbolAlumno {
                     // Pedir numero de control
                     numControl = JOptionPane.showInputDialog(null, "Numero de control: ", "Buscar un nodo",
                             JOptionPane.QUESTION_MESSAGE);
-
-                    // Buscar
                     alumno = new Alumno(numControl, "", "", "", "", 0, 0);
 
-                    // Mostrar
+                    // Buscar
                     if (arbol.buscar(alumno) != null)
-                        JOptionPane.showMessageDialog(null, arbol.buscar(alumno), "Nodo encontrado",
-                                JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "El alumno con numero de control: " + numControl +
+                                " sí existe");
                     else
-                        JOptionPane.showMessageDialog(null, "Nodo no encontrado", "Nodo no encontrado",
-                                JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "El alumno con numero de control: " + numControl +
+                                " no existe");
                     break;
                 case 6:
                     // Pedir numero de control
@@ -104,6 +103,10 @@ public class AppArbolAlumno {
 
                     // Eliminar
                     arbol.eliminar(alumno);
+
+                    // Mostrar mensaje
+                    JOptionPane.showMessageDialog(null, "El alumno con numero de control: " + numControl +
+                            " ha sido eliminado");
                     break;
                 case 7:
                     JOptionPane.showMessageDialog(null, "Fin del programa");
