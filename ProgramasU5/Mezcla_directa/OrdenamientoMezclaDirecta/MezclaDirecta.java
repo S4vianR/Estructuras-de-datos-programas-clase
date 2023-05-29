@@ -40,7 +40,8 @@ public class MezclaDirecta {
             i = 0;
             j = 0;
             k = 0;
-            // Mientras que el tamaño de b y c sea diferente de j y k respectivamente se ejecutara el ciclo while
+            // Mientras que el tamaño de b y c sea diferente de j y k respectivamente se
+            // ejecutara el ciclo while
             while (b.length != j && c.length != k) {
                 // Condicion para ordenar el arreglo
                 if (b[j] < c[k]) {
