@@ -54,10 +54,12 @@ public class appBinaria {
                     }
                     break;
                 case 3:
-                    // Mostrar alumnos for each
-                    for (alumno alumno : alumnos) {
-                        JOptionPane.showMessageDialog(null, alumno.toString());
+                    // Mostrar alumnos
+                    String alumnosString = "";
+                    for (int i = 0; i < alumnos.size(); i++) {
+                        alumnosString += alumnos.get(i).toString() + "\n\n";
                     }
+                    JOptionPane.showMessageDialog(null, alumnosString);
                     break;
                 case 4:
                     // Salir
