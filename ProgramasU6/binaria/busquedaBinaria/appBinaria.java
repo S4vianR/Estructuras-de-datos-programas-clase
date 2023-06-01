@@ -88,7 +88,7 @@ public class appBinaria {
                 principio = medio + 1;
             } else if (alumnos.get(medio).getNumeroDeControl() == numeroDeControl) {
                 JOptionPane.showMessageDialog(null,
-                        "Alumno encontrado, en la posicion: " + medio + 1 + "\n" + alumnos.get(medio).toString());
+                        "Alumno encontrado, en la posicion: " + (medio + 1) + "\n" + alumnos.get(medio).toString());
                 break;
             } else {
                 fin = medio - 1;
