@@ -38,6 +38,7 @@ public class appBinaria {
                         numeroDeControl = Integer.parseInt(JOptionPane.showInputDialog("Número de control"));
                         alumnos.add(new alumno(primerNombre, segundoNombre, primerApellido, segundoApellido, edad,
                                 carrera, numeroDeControl));
+                        JOptionPane.showMessageDialog(null, "Alumno agregado");
                     } catch (Exception e) {
                         JOptionPane.showMessageDialog(null, "Error al agregar alumno", "Error",
                                 JOptionPane.ERROR_MESSAGE);
