@@ -63,14 +63,20 @@ public class appBinaria {
     }
 
     // Busqueda binaria
-    public static void busquedaBinaria(ArrayList<alumno> alumnos, int numeroDeControl,int principio, int fin) {
+    public static void busquedaBinaria(ArrayList<alumno> alumnos, int numeroDeControl, int principio, int fin) {
         // Busqueda por numero de control
-        int medio = principio + fin/2;
+        if (alumnos.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "No hay alumnos registrados", "No encontrado",
+                    JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        int medio = principio + fin / 2;
         while (principio <= fin) {
             if (alumnos.get(medio).getNumeroDeControl() < numeroDeControl) {
                 principio = medio + 1;
             } else if (alumnos.get(medio).getNumeroDeControl() == numeroDeControl) {
-                JOptionPane.showMessageDialog(null, "Alumno encontrado, en la posicion: " + medio + 1 + "\n" + alumnos.get(medio).toString());
+                JOptionPane.showMessageDialog(null,
+                        "Alumno encontrado, en la posicion: " + medio + 1 + "\n" + alumnos.get(medio).toString());
                 break;
             } else {
                 fin = medio - 1;
@@ -78,7 +84,7 @@ public class appBinaria {
             medio = (principio + fin) / 2;
         }
         if (principio > fin) {
-            JOptionPane.showMessageDialog(null, "Alumno no encontrado","No encontrado",JOptionPane.ERROR_MESSAGE);
-        }   
+            JOptionPane.showMessageDialog(null, "Alumno no encontrado", "No encontrado", JOptionPane.ERROR_MESSAGE);
+        }
     }
 }
