@@ -1,5 +1,7 @@
 package busquedaBinaria;
 
+// JOption
+import javax.swing.JOptionPane;
 public class alumno {
     // Atributos
     private String primerNombre;
@@ -56,7 +58,8 @@ public class alumno {
         if (primerNombre.length() > 0) {
             this.primerNombre = primerNombre;
         } else {
-            System.out.println("El primer nombre no puede estar vacío");
+            JOptionPane.showMessageDialog(null, "El primer nombre no puede estar vacío", "Error",
+                    JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -69,7 +72,8 @@ public class alumno {
         if (primerApellido.length() > 0) {
             this.primerApellido = primerApellido;
         } else {
-            System.out.println("El primer apellido no puede estar vacío");
+            JOptionPane.showMessageDialog(null, "El primer apellido no puede estar vacío", "Error",
+                    JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -82,7 +86,8 @@ public class alumno {
         if (edad > 0) {
             this.edad = edad;
         } else {
-            System.out.println("La edad no puede ser menor o igual a 0");
+            JOptionPane.showMessageDialog(null, "La edad no puede ser menor o igual a 0", "Error",
+                    JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -90,7 +95,8 @@ public class alumno {
         if (carrera.length() > 0) {
             this.carrera = carrera;
         } else {
-            System.out.println("La carrera no puede estar vacía");
+            JOptionPane.showMessageDialog(null, "La carrera no puede estar vacía", "Error",
+                    JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -98,7 +104,8 @@ public class alumno {
         if (numeroDeControl > 0) {
             this.numeroDeControl = numeroDeControl;
         } else {
-            System.out.println("El número de control no puede ser menor o igual a 0");
+            JOptionPane.showMessageDialog(null, "El número de control no puede ser menor o igual a 0", "Error",
+                    JOptionPane.ERROR_MESSAGE);
         }
     }
 

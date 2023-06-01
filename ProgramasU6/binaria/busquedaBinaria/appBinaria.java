@@ -28,20 +28,30 @@ public class appBinaria {
             switch (opcion) {
                 case 1:
                     // Agregar alumno
-                    primerNombre = JOptionPane.showInputDialog("Primer nombre");
-                    segundoNombre = JOptionPane.showInputDialog("Segundo nombre");
-                    primerApellido = JOptionPane.showInputDialog("Primer apellido");
-                    segundoApellido = JOptionPane.showInputDialog("Segundo apellido");
-                    edad = Integer.parseInt(JOptionPane.showInputDialog("Edad"));
-                    carrera = JOptionPane.showInputDialog("Carrera");
-                    numeroDeControl = Integer.parseInt(JOptionPane.showInputDialog("Número de control"));
-                    alumnos.add(new alumno(primerNombre, segundoNombre, primerApellido, segundoApellido, edad, carrera,
-                            numeroDeControl));
+                    try {
+                        primerNombre = JOptionPane.showInputDialog("Primer nombre");
+                        segundoNombre = JOptionPane.showInputDialog("Segundo nombre");
+                        primerApellido = JOptionPane.showInputDialog("Primer apellido");
+                        segundoApellido = JOptionPane.showInputDialog("Segundo apellido");
+                        edad = Integer.parseInt(JOptionPane.showInputDialog("Edad"));
+                        carrera = JOptionPane.showInputDialog("Carrera");
+                        numeroDeControl = Integer.parseInt(JOptionPane.showInputDialog("Número de control"));
+                        alumnos.add(new alumno(primerNombre, segundoNombre, primerApellido, segundoApellido, edad,
+                                carrera, numeroDeControl));
+                    } catch (Exception e) {
+                        JOptionPane.showMessageDialog(null, "Error al agregar alumno", "Error",
+                                JOptionPane.ERROR_MESSAGE);
+                    }
                     break;
                 case 2:
                     // Buscar alumno
-                    numeroDeControl = Integer.parseInt(JOptionPane.showInputDialog("Número de control a buscar"));
-                    busquedaBinaria(alumnos, numeroDeControl, 0, alumnos.size() - 1);
+                    try {
+                        numeroDeControl = Integer.parseInt(JOptionPane.showInputDialog("Número de control"));
+                        busquedaBinaria(alumnos, numeroDeControl, 0, alumnos.size() - 1);
+                    } catch (Exception e) {
+                        JOptionPane.showMessageDialog(null, "Error al buscar alumno" + "\n\n" + e.toString(), "Error",
+                                JOptionPane.ERROR_MESSAGE);
+                    }
                     break;
                 case 3:
                     // Mostrar alumnos for each
